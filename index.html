@@ -7,6 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="./style.css" rel="stylesheet">
     <title>Event Item Confirmation</title>
+
+    
+<script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+
+<script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+<script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+<script defer src="./init-firebase.js" type="module"></script>
+
 </head>
 
 <body>
@@ -46,12 +54,13 @@
     const listOutConteiner = document.querySelector(".item-out-list");
 
 
-    function AddOption(description) {
+    function AddOption(description, item) {
+        if(description == "") return;
         const option = document.createElement("div");
         option.innerHTML = description;
         option.classList.add("item", "interactable");
-        // option.id = 0;
-        option.setAttribute("onclick", "Log()");
+        option.id = item;
+        option.setAttribute("onclick", "Choose()");
 
         listConteiner.appendChild(option);
 
@@ -79,26 +88,14 @@
     }
 
 
-
-    function Log() {
+    function Choose() {
         console.log("testando click");
         console.log("name: " + nameField.value);
     }
 
-    AddOption("Item test");
-    AddOption("Item test");
-    AddOption("Item test");
-    AddItemOut("Item test", "Pessoa1");
-    AddItemOut("Item test", "Pessoa1");
-    AddItemOut("Item test", "Pessoa1");
+
 </script>
 
-
-<script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-
-<script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
-<script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
-<script defer src="./init-firebase.js"></script>
 
 
 
