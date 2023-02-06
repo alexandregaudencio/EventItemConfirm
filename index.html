@@ -1,21 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./src/main.js"></script>
+    <script src="./main.js"></script>
+    <link href="./style.css" rel="stylesheet">
     <title>Event Item Confirmation</title>
 </head>
-<body>
-    <div class="main">
-        <h2>test</h2>
 
+<body>
+    <div class="identifier">
+        <p class="title-label">Lista de itens da festa.</p>
+        <label for="name">Seu nome:</label>
+        <input type="text" name="name" id="name"> 
     </div>
 
     
 
 
-    
+
+        <div class="pre-choose-tem-list">
+            <p class="title-label">Itens disponíveis.</p>
+            <div class="item-list">
+            </div>
+
+        </div>
+
+
+
+    <div class="post-choose-item-list">
+        <p class="title-label">Itens já escolhidos</p>
+        <div class="item-out-list">
+
+        </div>
+
+
+    </div>
+
 </body>
+
+<script>
+    const listConteiner = document.querySelector(".item-list");
+    const listOutConteiner = document.querySelector(".item-out-list");
+
+
+    function AddOption(description) {
+        const option = document.createElement("div");
+        option.innerHTML = description;
+        option.classList.add("item", "interactable");
+        // option.id = 0;
+        option.setAttribute("onclick", "Log()");
+
+        listConteiner.appendChild(option);
+
+    }
+
+
+    function AddItemOut(description, person) {
+        const item = document.createElement("div");
+        item.innerHTML = description;
+        item.classList.add("item");
+        // option.id = 0;
+        // item.setAttribute("onclick", "Log()");
+
+        item.appendChild(TargetPlayerNode(person));
+
+        listOutConteiner.appendChild(item);
+
+    }
+
+    function TargetPlayerNode(person) {
+        node = document.createElement("p");
+        node.classList.add("person-name");
+        node.innerHTML = "person";
+        return node;
+    }
+
+
+
+    function Log() {
+        console.log("testando click");
+    }
+
+    AddOption("Item test");
+    AddOption("Item test");
+    AddOption("Item test");
+    AddItemOut("Item test", "Pessoa1");
+    AddItemOut("Item test", "Pessoa1");
+    AddItemOut("Item test", "Pessoa1");
+</script>
+
 </html>
