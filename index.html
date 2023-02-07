@@ -1,102 +1,218 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./style.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,500;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <title>Lista de confirmação</title>
+  </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="./style.css" rel="stylesheet">
-    <title>Event Item Confirmation</title>
-
-    
-<script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-
-<script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
-<script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
-<script defer src="./init-firebase.js" type="module"></script>
-
-</head>
-
-<body>
+  <body>
     <div class="identifier">
-        <p class="title-label">Lista de itens da festa.</p>
-        <label for="name">Seu nome:</label>
-        <input type="text" id="name-field">
+      <p class="title-label">Lista de itens da festa.</p>
+      <label for="name">Seu nome:</label>
+      <input type="text" id="name-field" />
     </div>
-
-
-
-
 
     <div class="pre-choose-tem-list">
-        <p class="title-label">Itens disponíveis.</p>
-        <div class="item-list">
-        </div>
-
+      <p class="title-label">Itens disponíveis.</p>
+      <p class="legend">clique em um item para escolher.</p>
+      <div class="item-list"></div>
     </div>
-
-
 
     <div class="post-choose-item-list">
-        <p class="title-label">Itens já escolhidos</p>
-        <div class="item-out-list">
-
-        </div>
-
-
+      <p class="title-label">Itens já escolhidos</p>
+      <div class="item-out-list"></div>
     </div>
+  </body>
 
-</body>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
+    import {
+      getDatabase,
+      ref,
+      set,
+      child,
+      get,
+      push,
+      update,
+    } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
 
-<script>
     const nameField = document.querySelector("#name-field");
     const listConteiner = document.querySelector(".item-list");
     const listOutConteiner = document.querySelector(".item-out-list");
 
+    const firebaseConfig = {
+      apiKey: "AIzaSyB6mgn9b8NiWJX45Pv8qb3uI9LBPAYDFyc",
+      authDomain: "event-item-confirm.firebaseapp.com",
+      databaseURL: "https://event-item-confirm-default-rtdb.firebaseio.com",
+      projectId: "event-item-confirm",
+      storageBucket: "event-item-confirm.appspot.com",
+      messagingSenderId: "749901201064",
+      appId: "1:749901201064:web:44bd558e89c95b5e718c9d",
+      measurementId: "G-EXBVLWN2RX",
+    };
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+    const dbRef = ref(database);
 
-    function AddOption(description, item) {
-        if(description == "") return;
-        const option = document.createElement("div");
-        option.innerHTML = description;
-        option.classList.add("item", "interactable");
-        option.id = item;
-        option.setAttribute("onclick", "Choose()");
+    function ChooseItem(item, person) {
+      const updates = {};
+      updates["/itens/" + item + "/chosen"] = true;
+      updates["/itens/" + item + "/person"] = person;
 
-        listConteiner.appendChild(option);
-
+      return update(ref(database), updates);
     }
 
-
-    function AddItemOut(description, person) {
-        const item = document.createElement("div");
-        item.innerHTML = description;
-        item.classList.add("item");
-        // option.id = 0;
-        // item.setAttribute("onclick", "Log()");
-
-        item.appendChild(TargetPlayerNode(person));
-
-        listOutConteiner.appendChild(item);
-
+    function AddDescriptionViewItemList(item) {
+      get(child(dbRef, "itens/" + item + "/description"))
+        .then((snapshot) => {
+          if (snapshot.exists()) {
+            // console.log(snapshot.val());
+            AddItem(snapshot.val(), item);
+          } else {
+            console.log("No data available");
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
     }
 
-    function TargetPlayerNode(person) {
-        node = document.createElement("p");
-        node.classList.add("person-name");
-        node.innerHTML = "person";
-        return node;
+    function AddDescriptionViewItemOutList(item) {
+      get(child(dbRef, "itens/" + item + "/description"))
+        .then((snapshot) => {
+          // console.log(snapshot.val());
+          get(child(dbRef, "itens/" + item + "/person"))
+            .then((snapshot2) => {
+              AddItemOut(snapshot.val(), item, snapshot2.val());
+            })
+            .catch((error) => {
+              console.error(error);
+            });
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+    function GenerateItemList() {
+      get(child(dbRef, `itens`))
+        .then((snapshot) => {
+          if (snapshot.exists()) {
+            // console.log(snapshot.val());
+            snapshot.forEach((childSnapshot) => {
+              var childKey = childSnapshot.key; //nome do item
+              var childData = childSnapshot.val(); //childs
+
+              //verify if the chosen database of current item is false: then, additemtoChooseList
+              get(child(dbRef, "itens/" + childKey + "/chosen"))
+                .then((snapshot) => {
+                  if (snapshot.exists()) {
+                    if (!snapshot.val()) AddDescriptionViewItemList(childKey);
+                  } else {
+                    console.log("No data available");
+                  }
+                })
+                .catch((error) => {
+                  console.error(error);
+                });
+            });
+          } else {
+            console.log("No data available");
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
     }
 
+    function GenerateItemOutList() {
+      get(child(dbRef, `itens`))
+        .then((snapshot) => {
+          if (snapshot.exists()) {
+            // console.log(snapshot.val());
+            snapshot.forEach((childSnapshot) => {
+              var childKey = childSnapshot.key; //nome do item
+              var childData = childSnapshot.val(); //childs
 
-    function Choose() {
-        console.log("testando click");
-        console.log("name: " + nameField.value);
+              //verify if the chosen database of current item is false: then, additemtoChooseList
+              get(child(dbRef, "itens/" + childKey + "/chosen"))
+                .then((snapshot) => {
+                  if (snapshot.exists()) {
+                    if (snapshot.val()) AddDescriptionViewItemOutList(childKey);
+                  } else {
+                    console.log("No data available");
+                  }
+                })
+                .catch((error) => {
+                  console.error(error);
+                });
+            });
+          } else {
+            console.log("No data available");
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
     }
 
+    function AddItem(description, item) {
+      if (description == "") return;
+      const option = document.createElement("div");
 
-</script>
+      option.innerHTML = description;
+      option.classList.add("item", "interactable");
+      option.id = item;
+      option.setAttribute("onclick", "ClickItem(this)");
+      listConteiner.appendChild(option);
+    }
 
+    function AddItemOut(description, item, person) {
+      const divContainer = document.createElement("div");
+      divContainer.id = item;
+      divContainer.classList.add("item");
+      divContainer.appendChild(GenerateNode(person, "out-person"));
+      divContainer.appendChild(GenerateNode(description, "out-description"));
+      listOutConteiner.appendChild(divContainer);
+    }
 
+    function GenerateNode(text, className) {
+      const node = document.createElement("p");
+      node.classList.add(className);
+      node.innerHTML = text;
+      return node;
+    }
 
+    function ResetListOutConteiner() {
+      while (listOutConteiner.firstChild) {
+        listOutConteiner.removeChild(listOutConteiner.firstChild);
+      }
+    }
 
+    function ClickItem(element) {
+      console.log(element.id);
+      ChooseItem(element.id, nameField.value);
+
+      listConteiner.removeChild(element);
+      ResetListOutConteiner();
+      GenerateItemOutList();
+    }
+
+    window.ClickItem = ClickItem;
+
+    nameField.value = "junior";
+    nameField.value = prompt("Primeiro, digite seu nome: ");
+
+    GenerateItemList();
+    GenerateItemOutList();
+  </script>
 </html>

@@ -1,28 +1,82 @@
+*:root {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bgColor);
+  font-family: "Rubik", sans-serif;
 
+  --borderColor: #ffb7f3;
+  --bgColor: #cddafd;
+  --textColor: #4a4a4a;
+  --legendColor: #ca6262;
+}
+
+p {
+  color: var(--textColor);
+}
+
+.body {
+  margin: 0;
+  padding: 0;
+}
 .title-label {
-     font-size: 30px;
-     font-weight: 500;
+  font-size: 30px;
+  font-weight: 500;
+  text-align: center;
+  margin: 1em 0 0 0;
+}
+
+.identifier {
+  padding-bottom: 10px;
+  text-align: center;
+  border-bottom: 1px solid var(--textColor);
+}
+
+.legend {
+  text-align: center;
+  
+  margin: 0 0 2em 0;
+  color: var(--legendColor);
 }
 
 .item {
-     margin: 0.2em 0;
-     display: flex;
-     border: 1px solid #000000;
-     padding: 0.2em 0em;
+  margin: 0.2em 0.5em;
 
+  /* display: flex; */
+  border: 1px solid var(--borderColor);
+  border-radius: 3px;
+  padding: 0.2em 0.3em;
+  background-color: #e2ece9;
 }
 
 .interactable {
-     cursor: pointer;
+  cursor: pointer;
 }
 
-
-.interactable:hover  {
-     background-color: rgb(190, 190, 255);
+.interactable:hover {
+  background-color: rgb(190, 190, 255);
 }
-
 
 .person-name {
-     padding: 0.2em;
-     margin: 0.2em;
+  padding: 0.2em;
+  margin: 0.2em;
+  color: rgb(0, 154, 98);
+  text-align: right;
+}
+
+.item-out-list {
+}
+
+.out-person {
+  margin: 0;
+  color: #ae184f;
+  position: inherit;
+}
+
+.out-description {
+  margin: 0;
+}
+
+#name-field {
+  border-radius: 5px;
+  border: 1px solid var(--borderColor);
+  padding: 4px;
 }
