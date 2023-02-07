@@ -16,7 +16,7 @@
 
   <body>
     <div class="identifier">
-      <p class="title-label">Lista de itens da festa.</p>
+      <p class="title-label">Lista de itens da festa - Lilian 12/02</p>
       <label for="name">Seu nome:</label>
       <input type="text" id="name-field" />
     </div>
@@ -205,15 +205,24 @@
         );
         return;
       }
+      if (nameField.value != "") {
+        Confirmation(element);
+        return;
+      }
+      
       if (nameField.value == "") {
-        nameField.value = prompt("Você deixou seu nome em branco. Digite seu nome:");
-        clickItem(element);
+        nameField.value = prompt(
+          "Você deixou seu nome em branco. Digite seu nome:"
+        );
+        if (nameField.value != "") Confirmation(element);
       } else {
         if (!confirm("Seu nome está correto? \n" + nameField.value)) {
           nameField.value = prompt("Digite seu nome: ");
         }
       }
+    }
 
+    function Confirmation(element) {
       if (
         confirm(
           "você confirma que irá levar " +
