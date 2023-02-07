@@ -2,10 +2,11 @@
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: var(--bgColor);
   font-family: "Rubik", sans-serif;
+  font-size: var(--smallSizeFont);
 
-  font-size: 1vw;
 
-
+  --smallSizeFont: 3vw;
+  --bigSizeFont: 7vw;
   --borderColor: #ffb7f3;
   --bgColor: #ffeffc;
   --textColor: #4a4a4a;
@@ -15,7 +16,7 @@
 
 p {
   color: var(--textColor);
-  font-size: 1vw;
+  font-size: var(--smallSizeFont)
 }
 
 .body {
@@ -23,7 +24,7 @@ p {
   padding: 0;
 }
 .title-label {
-  font-size: 3vw;
+  font-size: var(--bigSizeFont);
   font-weight: 500;
   text-align: center;
   margin: 1em 0 0 0;
@@ -84,5 +85,5 @@ p {
   border-radius: 5px;
   border: 1px solid var(--borderColor);
   padding: 4px;
-  font-size: 1vw;
+  font-size: var(--smallSizeFont);
 }
