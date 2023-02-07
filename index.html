@@ -205,7 +205,20 @@
         );
         return;
       }
-      if (confirm("você confirma que irá levar " + element.innerText.toUpperCase() +"  ?"
+      if (nameField.value == "") {
+        nameField.value = prompt("Você deixou seu nome em branco. Digite seu nome:");
+        clickItem(element);
+      } else {
+        if (!confirm("Seu nome está correto? \n" + nameField.value)) {
+          nameField.value = prompt("Digite seu nome: ");
+        }
+      }
+
+      if (
+        confirm(
+          "você confirma que irá levar " +
+            element.innerText.toUpperCase() +
+            "  ?"
         )
       ) {
         ChooseItem(element.id, nameField.value);
@@ -213,6 +226,7 @@
         ResetListOutConteiner();
         GenerateItemOutList();
         escolheu = true;
+        alert("Confirmação realizada!");
       }
     }
 

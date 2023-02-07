@@ -3,6 +3,7 @@
   background-color: var(--bgColor);
   font-family: "Rubik", sans-serif;
   font-size: var(--smallSizeFont);
+  color: var(--textColor);
 
 
   --smallSizeFont: 3vw;
@@ -74,6 +75,7 @@ p {
 
 .out-description {
   margin: 0;
+  padding-left: 1em;
 }
 
 #name-field {
@@ -81,4 +83,5 @@ p {
   border: 1px solid var(--borderColor);
   padding: 4px;
   font-size: var(--smallSizeFont);
+  background-color: #FFFCF0;
 }
