@@ -12,6 +12,7 @@
   --textColor: #4a4a4a;
   --legendColor: #ca6262;
   --itemColor: #ffffff;
+  --personColor: rgb(0, 154, 98);
 }
 
 p {
@@ -61,19 +62,13 @@ p {
   background-color: rgb(190, 190, 255);
 }
 
-.person-name {
-  padding: 0.2em;
-  margin: 0.2em;
-  color: rgb(0, 154, 98);
-  text-align: right;
-}
 
 .item-out-list {
 }
 
 .out-person {
   margin: 0;
-  color: #ae184f;
+  color: var(--personColor);
   position: inherit;
 }
 

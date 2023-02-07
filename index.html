@@ -63,7 +63,7 @@
     const app = initializeApp(firebaseConfig);
     const database = getDatabase(app);
     const dbRef = ref(database);
-
+    var escolheu = false;
     function ChooseItem(item, person) {
       const updates = {};
       updates["/itens/" + item + "/chosen"] = true;
@@ -199,12 +199,21 @@
     }
 
     function ClickItem(element) {
-      console.log(element.id);
-      ChooseItem(element.id, nameField.value);
-
-      listConteiner.removeChild(element);
-      ResetListOutConteiner();
-      GenerateItemOutList();
+      if (escolheu) {
+        alert(
+          "Você já escolheu um item. Se cometeu um erro, entre em contato com o responsável."
+        );
+        return;
+      }
+      if (confirm("você confirma que irá levar " + element.innerText.toUpperCase() +"  ?"
+        )
+      ) {
+        ChooseItem(element.id, nameField.value);
+        listConteiner.removeChild(element);
+        ResetListOutConteiner();
+        GenerateItemOutList();
+        escolheu = true;
+      }
     }
 
     window.ClickItem = ClickItem;
