@@ -1,0 +1,161 @@
+{
+  "itens": {
+    "item1": {
+      "chosen": false,
+      "description": "Pavê",
+      "person": ""
+    },
+    "item2": {
+      "chosen": false,
+      "description": "20 salgadinhos",
+      "person": ""
+    },
+    "item3": {
+      "chosen": false,
+      "description": "20 salgadinhos",
+      "person": ""
+    },
+    "item4": {
+      "chosen": false,
+      "description": "20 salgadinhos",
+      "person": ""
+    },
+    "item5": {
+      "chosen": false,
+      "description": "20 salgadinhos",
+      "person": ""
+    },
+    "item6": {
+      "chosen": false,
+      "description": "20 salgadinhos",
+      "person": ""
+    },
+    "item7": {
+      "chosen": false,
+      "description": "20 salgadinhos",
+      "person": ""
+    },
+    "item8": {
+      "chosen": false,
+      "description": "20 salgadinhos",
+      "person": ""
+    },
+    "item9": {
+      "chosen": false,
+      "description": "20 salgadinhos",
+      "person": ""
+    },
+    "item10": {
+      "chosen": false,
+      "description": "20 salgadinhos",
+      "person": ""
+    },
+    "item11": {
+      "chosen": false,
+      "description": "20 salgadinhos",
+      "person": ""
+    },
+    "item12": {
+      "chosen": false,
+      "description": "20 docinhos",
+      "person": ""
+    },
+    "item13": {
+      "chosen": false,
+      "description": "20 docinhos",
+      "person": ""
+    },
+    "item14": {
+      "chosen": false,
+      "description": "20 docinhos",
+      "person": ""
+    },
+    "item15": {
+      "chosen": false,
+      "description": "20 docinhos",
+      "person": ""
+    },
+    "item16": {
+      "chosen": false,
+      "description": "20 docinhos",
+      "person": ""
+    },
+    "item17": {
+      "chosen": false,
+      "description": "20 docinhos",
+      "person": ""
+    },
+    "item18": {
+      "chosen": false,
+      "description": "20 docinhos",
+      "person": ""
+    },
+    "item19": {
+      "chosen": false,
+      "description": "20 docinhos",
+      "person": ""
+    },
+    "item20": {
+      "chosen": false,
+      "description": "20 docinhos",
+      "person": ""
+    },
+    "item21": {
+      "chosen": false,
+      "description": "20 docinhos",
+      "person": ""
+    },
+    "item22": {
+      "chosen": false,
+      "description": "2 refri + 2 pacotes de guardanapos",
+      "person": ""
+    },
+    "item23": {
+      "chosen": false,
+      "description": "2 refri +  2 pacotes de guardanapos ",
+      "person": ""
+    },
+    "item24": {
+      "chosen": false,
+      "description": "2 refri + 2 pacotes de pratos ",
+      "person": ""
+    },
+    "item25": {
+      "chosen": false,
+      "description": "2 refri +  2 pacotes de pratos",
+      "person": ""
+    },
+    "item26": {
+      "chosen": false,
+      "description": "2 refri + 1 pacote de copos",
+      "person": ""
+    },
+    "item27": {
+      "chosen": false,
+      "description": "2 refri + 2 pacotes de garfinhos",
+      "person": ""
+    },
+    "item28": {
+      "chosen": false,
+      "description": "2 sucos + 2 pactores de pratos ",
+      "person": ""
+    },
+    "item29": {
+      "chosen": false,
+      "description": "2 sucos + 2  pacotes de pratos ",
+      "person": ""
+    },
+    "item30": {
+      "chosen": false,
+      "description": "2 sucos + 1 pacote de copos",
+      "person": ""
+    },
+    "item31": {
+      "chosen": false,
+      "description": "Mousse",
+      "person": ""
+    }
+
+  }
+
+}
