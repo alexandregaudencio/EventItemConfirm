@@ -1,9 +1,9 @@
 *:root {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  /* background-color: var(--bgColor); */
   font-family: "Rubik", sans-serif;
   font-size: var(--smallSizeFont);
   color: var(--textColor);
+
 
   --smallSizeFontWebDisplay: 2vw;
   --smallSizeFont: 4vw;
@@ -14,17 +14,17 @@
   --legendColor: #ba3939;
   --itemColor: #ffffff;
   --personColor: rgb(0, 136, 86);
+  --textBgColor: #ffffff;
 }
 
 p {
   color: var(--textColor);
-  font-size: var(--smallSizeFont)
+  font-size: var(--smallSizeFont);
 }
 
 body {
   margin: 0;
   padding: 0;
-
 }
 .title-label {
   font-size: var(--bigSizeFont);
@@ -32,7 +32,6 @@ body {
   text-align: center;
   margin: 0 0 0 0;
 }
-
 
 .identifier {
   padding-bottom: 10px;
@@ -42,7 +41,7 @@ body {
 
 .legend {
   text-align: center;
-  
+
   margin: 0 0 2em 0;
   color: var(--legendColor);
 }
@@ -61,9 +60,8 @@ body {
 }
 
 .interactable:hover {
-  background-color: rgb(190, 190, 255);
+  background-color: #fdf6db;
 }
-
 
 .item-out-list {
 }
@@ -84,19 +82,21 @@ body {
   border: 1px solid var(--borderColor);
   padding: 4px;
   font-size: var(--smallSizeFont);
-  background-color: #FFFCF0;
+  background-color: var(--textBgColor)
 }
 
-
+@media screen and (max-width: 600px) {
+  .interactable:hover {
+    background-color: var(--textBgColor)
+  }
+}
 
 @media screen and (min-width: 600px) {
   .item-list {
-    align-items: center;    
-    
-    justify-content: center;    
-  }
-  
+    align-items: center;
 
+    justify-content: center;
+  }
 
   .item {
     width: 50%;
@@ -104,22 +104,18 @@ body {
     font-size: var(--smallSizeFontWebDisplay);
   }
 
-
   label {
     font-size: var(--smallSizeFontWebDisplay);
   }
 
   #name-field {
     font-size: var(--smallSizeFontWebDisplay);
-
   }
 
   .title-label {
-    font-size: var(--smallSizeFontWebDisplay)/2;
-
+    font-size: var(--smallSizeFontWebDisplay) / 2;
   }
   p {
     font-size: var(--smallSizeFontWebDisplay);
-
   }
 }
