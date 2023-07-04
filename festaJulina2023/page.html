@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../style.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,500;1,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <script type="module" src="../main.js"></script>
+    <title>Festa da Julina 2023</title>
+  </head>
+
+  <body>
+    <div class="identifier">
+      <p class="title-label">Lista de itens</p>
+      <p class="title-label">Festa da Julina 2023</p>
+
+      <label for="name">Seu nome:</label>
+      <input type="text" id="name-field" />
+    </div>
+
+    <div class="pre-choose-tem-list">
+      <p class="title-label">Itens disponíveis.</p>
+      <p class="legend">clique em um item para escolher.</p>
+      <div class="item-list"></div>
+    </div>
+
+    <div class="post-choose-item-list">
+      <p class="title-label">Itens já escolhidos</p>
+      <div class="item-out-list"></div>
+    </div>
+  </body>
+
+  <style>
+    body {
+      background-image: url("./img/junina-pattern.jpg");
+      background-size: 500px;
+      background-repeat: repeat;
+      align-items: center;
+      backdrop-filter: blur(10px);
+    }
+  </style>
+
+  <script>
+    // main.Initialize("itensFestaLilian2022/");
+    import("../main.js")
+      .then((main) => {
+        // Agora você pode acessar os métodos do módulo
+        main.Initialize("itensFestaJulina2023/");
+      })
+      .catch((erro) => {
+        console.error("Ocorreu um erro ao importar o módulo:", erro);
+      });
+  </script>
+  
+</html>

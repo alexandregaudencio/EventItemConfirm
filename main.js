@@ -101,7 +101,7 @@ function GenerateItemList() {
 }
 
 function GenerateItemOutList() {
-  get(child(dbRef, `itensFestaLilian2022`))
+  get(child(dbRef, dataBasePath))
     .then((snapshot) => {
       if (snapshot.exists()) {
         // console.log(snapshot.val());
