@@ -9,12 +9,9 @@ import {
   update,
 } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
 
-
-
 const nameField = document.querySelector("#name-field");
 const listConteiner = document.querySelector(".item-list");
 const listOutConteiner = document.querySelector(".item-out-list");
-
 
 const firebaseConfig = {
   apiKey: "AIzaSyB6mgn9b8NiWJX45Pv8qb3uI9LBPAYDFyc",
@@ -31,7 +28,7 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const dbRef = ref(database);
 var escolheu = false;
-const dataBasePath = "itensFestaLilian2022/";
+var dataBasePath = "";
 
 function ChooseItem(item, person) {
   const updates = {};
@@ -208,10 +205,15 @@ function Confirmation(element) {
   }
 }
 
-window.ClickItem = ClickItem;
 
-nameField.value = "junior";
-nameField.value = prompt("Primeiro, digite seu nome: ");
+export function Initialize(path) {
+console.log(path)
+  dataBasePath = path;
+  window.ClickItem = ClickItem;
+  GenerateItemList();
+  GenerateItemOutList();
+  nameField.value = prompt("Primeiro, digite seu nome: ");
+}
 
-GenerateItemList();
-GenerateItemOutList();
+
+
