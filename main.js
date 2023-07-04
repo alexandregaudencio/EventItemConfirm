@@ -207,12 +207,13 @@ function Confirmation(element) {
 
 
 export function Initialize(path) {
-console.log(path)
   dataBasePath = path;
   window.ClickItem = ClickItem;
   GenerateItemList();
   GenerateItemOutList();
-  nameField.value = prompt("Primeiro, digite seu nome: ");
+  setTimeout(() => {
+    nameField.value = prompt("Primeiro, digite seu nome: ");
+  }, 2000);
 }
 
 
