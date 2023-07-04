@@ -52,11 +52,12 @@
     import("../main.js")
       .then((main) => {
         // Agora você pode acessar os métodos do módulo
-        main.Initialize("itensFestaJulina2023/");
+        window.onload = function () {
+          main.Initialize("itensFestaJulina2023/");
+        };
       })
       .catch((erro) => {
         console.error("Ocorreu um erro ao importar o módulo:", erro);
       });
   </script>
-  
 </html>
