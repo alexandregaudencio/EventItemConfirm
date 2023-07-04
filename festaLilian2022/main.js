@@ -9,9 +9,12 @@ import {
   update,
 } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
 
+
+
 const nameField = document.querySelector("#name-field");
 const listConteiner = document.querySelector(".item-list");
 const listOutConteiner = document.querySelector(".item-out-list");
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyB6mgn9b8NiWJX45Pv8qb3uI9LBPAYDFyc",
@@ -28,16 +31,18 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const dbRef = ref(database);
 var escolheu = false;
+const dataBasePath = "itensFestaLilian2022/";
+
 function ChooseItem(item, person) {
   const updates = {};
-  updates["/itens/" + item + "/chosen"] = true;
-  updates["/itens/" + item + "/person"] = person;
+  updates["/"+dataBasePath + item + "/chosen"] = true;
+  updates["/"+dataBasePath + item + "/person"] = person;
 
   return update(ref(database), updates);
 }
 
 function AddDescriptionViewItemList(item) {
-  get(child(dbRef, "itens/" + item + "/description"))
+  get(child(dbRef, dataBasePath + item + "/description"))
     .then((snapshot) => {
       if (snapshot.exists()) {
         // console.log(snapshot.val());
@@ -52,10 +57,10 @@ function AddDescriptionViewItemList(item) {
 }
 
 function AddDescriptionViewItemOutList(item) {
-  get(child(dbRef, "itens/" + item + "/description"))
+  get(child(dbRef, dataBasePath + item + "/description"))
     .then((snapshot) => {
       // console.log(snapshot.val());
-      get(child(dbRef, "itens/" + item + "/person"))
+      get(child(dbRef, dataBasePath + item + "/person"))
         .then((snapshot2) => {
           AddItemOut(snapshot.val(), item, snapshot2.val());
         })
@@ -68,7 +73,7 @@ function AddDescriptionViewItemOutList(item) {
     });
 }
 function GenerateItemList() {
-  get(child(dbRef, `itens`))
+  get(child(dbRef, `itensFestaLilian2022`))
     .then((snapshot) => {
       if (snapshot.exists()) {
         // console.log(snapshot.val());
@@ -77,7 +82,7 @@ function GenerateItemList() {
           var childData = childSnapshot.val(); //childs
 
           //verify if the chosen database of current item is false: then, additemtoChooseList
-          get(child(dbRef, "itens/" + childKey + "/chosen"))
+          get(child(dbRef, dataBasePath + childKey + "/chosen"))
             .then((snapshot) => {
               if (snapshot.exists()) {
                 if (!snapshot.val()) AddDescriptionViewItemList(childKey);
@@ -99,7 +104,7 @@ function GenerateItemList() {
 }
 
 function GenerateItemOutList() {
-  get(child(dbRef, `itens`))
+  get(child(dbRef, `itensFestaLilian2022`))
     .then((snapshot) => {
       if (snapshot.exists()) {
         // console.log(snapshot.val());
@@ -108,7 +113,7 @@ function GenerateItemOutList() {
           var childData = childSnapshot.val(); //childs
 
           //verify if the chosen database of current item is false: then, additemtoChooseList
-          get(child(dbRef, "itens/" + childKey + "/chosen"))
+          get(child(dbRef, dataBasePath + childKey + "/chosen"))
             .then((snapshot) => {
               if (snapshot.exists()) {
                 if (snapshot.val()) AddDescriptionViewItemOutList(childKey);

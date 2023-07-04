@@ -1,19 +1,19 @@
 *:root {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: var(--bgColor);
+  /* background-color: var(--bgColor); */
   font-family: "Rubik", sans-serif;
   font-size: var(--smallSizeFont);
   color: var(--textColor);
 
-
+  --smallSizeFontWebDisplay: 2vw;
   --smallSizeFont: 4vw;
   --bigSizeFont: 7vw;
-  --borderColor: #ffb7f3;
+  --borderColor: #a93e3e;
   --bgColor: #ffeffc;
   --textColor: #4a4a4a;
-  --legendColor: #ca6262;
+  --legendColor: #ba3939;
   --itemColor: #ffffff;
-  --personColor: rgb(0, 154, 98);
+  --personColor: rgb(0, 136, 86);
 }
 
 p {
@@ -21,16 +21,18 @@ p {
   font-size: var(--smallSizeFont)
 }
 
-.body {
+body {
   margin: 0;
   padding: 0;
+
 }
 .title-label {
   font-size: var(--bigSizeFont);
   font-weight: 500;
   text-align: center;
-  margin: 1em 0 0 0;
+  margin: 0 0 0 0;
 }
+
 
 .identifier {
   padding-bottom: 10px;
@@ -46,13 +48,12 @@ p {
 }
 
 .item {
+  text-align: center;
   margin: 0.2em 0.5em;
-
-  /* display: flex; */
   border: 1px solid var(--borderColor);
   border-radius: 3px;
   padding: 0.2em 0.3em;
-  background-color: var(--itemColor)
+  background-color: var(--itemColor);
 }
 
 .interactable {
@@ -84,4 +85,41 @@ p {
   padding: 4px;
   font-size: var(--smallSizeFont);
   background-color: #FFFCF0;
+}
+
+
+
+@media screen and (min-width: 600px) {
+  .item-list {
+    align-items: center;    
+    
+    justify-content: center;    
+  }
+  
+
+
+  .item {
+    width: 50%;
+    transform: translateX(25vw);
+    font-size: var(--smallSizeFontWebDisplay);
+  }
+
+
+  label {
+    font-size: var(--smallSizeFontWebDisplay);
+  }
+
+  #name-field {
+    font-size: var(--smallSizeFontWebDisplay);
+
+  }
+
+  .title-label {
+    font-size: var(--smallSizeFontWebDisplay)/2;
+
+  }
+  p {
+    font-size: var(--smallSizeFontWebDisplay);
+
+  }
 }

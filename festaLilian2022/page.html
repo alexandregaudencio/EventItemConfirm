@@ -7,15 +7,20 @@
     <link href="../style.css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,500;1,400&display=swap"
+      rel="stylesheet"
+    />
 
-    <script type="module" src="../main.js"> </script>
+    <script type="module" src="../main.js"></script>
     <title>Festa da Lilian 2022</title>
   </head>
 
   <body>
     <div class="identifier">
-      <p class="title-label">Lista de itens da festa - Lilian 12/02</p>
+      <p class="title-label">Lista de itens</p>
+      <p class="title-label">Festa da Lilian 2022</p>
+
       <label for="name">Seu nome:</label>
       <input type="text" id="name-field" />
     </div>
@@ -32,4 +37,26 @@
     </div>
   </body>
 
+  <style>
+    body {
+      background-image: url("./img/lilian-pattern.jpg");
+      background-size: 500px;
+      background-repeat: repeat;
+      align-items: center;
+      backdrop-filter: blur(10px);
+    }
+  </style>
+
+  <script>
+    // main.Initialize("itensFestaLilian2022/");
+    import("../main.js")
+      .then((main) => {
+        // Agora você pode acessar os métodos do módulo
+        main.Initialize("itensFestaLilian2022/");
+      })
+      .catch((erro) => {
+        console.error("Ocorreu um erro ao importar o módulo:", erro);
+      });
+  </script>
+  
 </html>
