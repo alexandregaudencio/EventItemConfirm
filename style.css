@@ -14,7 +14,8 @@
   --legendColor: #ba3939;
   --itemColor: #ffffff;
   --personColor: rgb(0, 136, 86);
-  --textBgColor: #ffffff83;
+  --textBgColor: #ffffff;
+  --bgInputField: #ffffff83;
 }
 
 p {
@@ -60,7 +61,7 @@ body {
 }
 
 .interactable:hover {
-  background-color: #fdf6db;
+  background-color: var(--textBgColor);
 }
 
 .item-out-list {
@@ -82,7 +83,7 @@ body {
   border: 1px solid var(--borderColor);
   padding: 4px;
   font-size: var(--smallSizeFont);
-  background-color: var(--textBgColor)
+  background-color: var(--bgInputField);
 }
 
 @media screen and (max-width: 600px) {
