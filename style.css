@@ -58,14 +58,13 @@ body {
 
 .interactable {
   cursor: pointer;
+  padding: 0.5em 0;
 }
 
 .interactable:hover {
   background-color: var(--textBgColor);
 }
 
-.item-out-list {
-}
 
 .out-person {
   margin: 0;
