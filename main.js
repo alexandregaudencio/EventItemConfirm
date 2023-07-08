@@ -211,9 +211,9 @@ export function Initialize(path) {
   window.ClickItem = ClickItem;
   GenerateItemList();
   GenerateItemOutList();
-  setTimeout(() => {
+  // setTimeout(() => {
     nameField.value = prompt("Primeiro, digite seu nome: ");
-  }, 2000);
+  // }, 2000);
 }
 
 
